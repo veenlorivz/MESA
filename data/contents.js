@@ -50,20 +50,43 @@ contents = [
     `    <select id="mySelect" multiple="multiple" style="width: 300px;" class="form-select"> ` +
     foods.map( food => `<option value="${food.name}" data-sugar="${food.sugar}">${food.name}</option>`) + 
     `    </select> `
-    ,
-    `
-        <h3 class="mb-3">Step 3: Hasil</h3>
-        <p>Kadar gula darah anda: 8%</p>
-        <p>Kadar gula anda termasuk: normal</p>
-        <p>Tips-tips untuk gula darah normal : </p>
-        <ol class="list-group list-group-numbered mb-3 ">
-            <li class="list-group-item">Makan teratur dengan makanan yang sehat Dan usahakan sarapan!.</li>
-            <li class="list-group-item">Pilih camilan sehat, seperti  buah yogurt atau roti.</li>
-            <li class="list-group-item">Perhatikan Porsi dan Jenis Karbohidrat seperti nasi merah, oatmeal, atau roti gandum.</li>
-            <li class="list-group-item">Usahakan olahraga tapi jangan berlebihan dan usahakan makan dulu sebelum olahraga yahh.</li>
-            <li class="list-group-item">Hindari makan makanan manis karena bisa membuat gula darah naik cepat, tetapi juga akan turun drastis.</li>
-            <li class="list-group-item">Jika sudah ada tanda tanda pusing, gemetar mudah lelah segera makana camilan manis seperti permen atau jus buah.</li>
-        </ol>
+]
 
-    `
+tips = [
+    { 
+        type: 'Rendah', 
+        advices: [
+            'Makan teratur dengan makanan yang sehat Dan usahakan sarapan!.',
+            'Pilih camilan sehat, seperti  buah yogurt atau roti.',
+            'Perhatikan Porsi dan Jenis Karbohidrat seperti nasi merah, oatmeal, atau roti gandum.',
+            'Usahakan olahraga tapi jangan berlebihan dan usahakan makan dulu sebelum olahraga yahh.',
+            'Hindari makan makanan manis karena bisa membuat gula darah naik cepat, tetapi juga akan turun drastis.',
+            'Jika sudah ada tanda tanda pusing, gemetar mudah lelah segera makana camilan manis seperti permen atau jus buah.',
+        ],
+        notes: 'Kamu lebih kuat dari yang kamu kira. Atur pola makanmu, jaga kesehatan, dan tubuhmu akan semakin bertenaga setiap hari!'
+    },
+    {
+        type: 'Normal',
+        advices: [
+            'Minum air putih yang cukup untuk membantu metabolisme berjalan lancar.',
+            'Tidurlah yang cukup karena menjaga keseimbangan hormon yang mengatur kadar gula darah.',
+            'Batasi makanan minuman manis karena bisa menyebabkan lonjakan gula darah :D',
+            'Jangan lupa seringlah berolahraga karena membantu gula darah agar tetap stabil', 
+            'Makanlah camilan sehat seperti buah, kacang-kacangan, yogurt, atau biskuit gandum'
+        ],
+        notes: 'Membangun kesehatan itu butuh usaha, dan kamu sudah melakukannya dengan baik . Terus lanjutkan!!!'
+    },
+    {
+        type: 'Tinggi',
+        advices: [
+            'Kurangi makanan tinggi gula seperti donat, permen, es teh dan lain lain ',
+            'Makan dalam porsi kecil namun sering! Agar membantu menjaga gula darah lebih stabil',
+            'Pilih minuman tanpa gula (less sugar)',
+            'Perhatikan Porsi dan kombinasi makanan. Usahakan di setiap makanan yg kamu makan ada protein serat dan karbohidrat.',
+            'Jagalah pola tidur dan jangan bergadang. alasannya karena membantu tubuh lebih seimbang dalam mengatur kadar gula darah.',
+            'Berolahragalah secara teratur seperti jalan kaki, bersepeda dll. Usahain olahraga 30 menit tiap hari.',
+            'Konsultasi ke dokter atau  ahli gizi. Mereka bisa beri saran yang tepat sesuai kebutuhan dan kondisi masing-masing.'
+        ],
+        notes: 'Menjaga pola makan, rutin berolahraga, dan mengelola stres adalah langkah penting untuk kesehatan. Tetap semangat, karena kesehatan adalah perjalanan panjang yang layak diperjuangkan!'
+    }
 ]

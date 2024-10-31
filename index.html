@@ -43,37 +43,67 @@
     const steps = document.querySelectorAll('.step');
     const stepContent = document.getElementById('stepContent');
     let currentStep = 0;
-
-    // Function to update content based on the current step
+    let sugarBlood = 0;
+    let name = '';
     function updateContent() {
-      stepContent.innerHTML = contents[currentStep]; // Set the inner HTML to the current step content
-      console.log(currentStep)
-
       
-      // Add the "Next" or "Refresh" button dynamically
+      console.log(currentStep)
       if (currentStep < steps.length - 1) {
-          stepContent.innerHTML += `<button type="button" class="btn btn-primary w-100 mb-3 mt-3" id="step2Button">Selanjutnya</button>`;
+        stepContent.innerHTML = contents[currentStep];
+        stepContent.innerHTML += `<button type="button" class="btn btn-primary w-100 mb-3 mt-3" id="step2Button">Selanjutnya</button>`;
           $(document).ready(function() {
-          $('#mySelect').select2({
-                placeholder: "Pilih Makanan",
-                allowClear: true,
-                width: '100%'
-            });
+            $('#name').on('change', function() {
+              name = $(this).val()
+            })
+            $('#mySelect').select2({
+                  placeholder: "Pilih Makanan",
+                  allowClear: true,
+                  width: '100%'
+              });
           });
           document.getElementById('step2Button').addEventListener('click', () => {
               steps[currentStep].classList.remove('active');
               currentStep++;
               steps[currentStep].classList.add('active');
               updateContent();
+              $('#mySelect').on('change', function() {
+              const selectedValues = $(this).val(); // Get selected values
+              const selectedData = selectedValues.map(value => {
+                  const option = $(this).find(`option[value="${value}"]`);
+                  return {
+                      name: value,
+                      sugar: option.data('sugar') 
+                  };
+              });
+              sugarBlood = selectedData.reduce((a,b) => a + b.sugar, 0)
+        });
           });
       } else {
-        stepContent.innerHTML += `<button type="button" class="btn btn-primary w-100 mb-3" id="refreshBtn">Kembali</button>`;
+        let sugarType = '';
+        if(sugarBlood >= 15 ) {
+          sugarType = 'Tinggi'
+        } else if(sugarBlood > 5 ) {
+          sugarType = 'Normal'
+        }else {
+          sugarType = 'Rendah'
+        }
+        stepContent.innerHTML = 
+          `<h3 class="mb-3">Step 3: Hasil</h3>` +
+          `<p>Hi, ${ name }</p>` +
+          `<p>Kadar gula darah anda: ${ sugarBlood }%</p>` +
+          `<p>Kadar gula anda termasuk: ${ sugarType }</p>` +
+          `<p>Tips-tips untuk gula darah ${sugarType} : </p>`+
+          `<ol class="list-group list-group-numbered mb-3 ">` +
+          tips[tips.findIndex(tip => tip.type === sugarType)].advices.reduce((a,b) => a + `<li class="list-group-item">${b}</li>`, '') +
+          `</ol>`+
+          `<button type="button" class="btn btn-primary w-100 mb-3" id="refreshBtn">Kembali</button>
+        `;
             document.getElementById('refreshBtn').addEventListener('click', () => {
-                location.reload(); // Refresh the page
+                location.reload();
             });
       }
 
-      // Show the current step content
+    
       document.querySelectorAll('.step-content').forEach(sc => sc.classList.remove('active'));
       stepContent.classList.add('active');
     }
