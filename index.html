@@ -125,8 +125,8 @@
           `<h3 class="mb-3">Step 3: Hasil</h3>` +
           `<p>Hi, ${ name }</p>` +
           `<p>Kadar gula makanan anda: ${ sugarBlood }</p>` +
-          `<p>Kadar gula anda termasuk: ${ sugarType }</p>` +
-          `<p>Tips-tips untuk gula darah ${sugarType} : </p>`+
+          `<p>Kadar gula makanan anda termasuk: ${ sugarType }</p>` +
+          `<p>Tips-tips untuk gula makanan ${sugarType} : </p>`+
           `<ol class="list-group list-group-numbered mb-3 ">` +
             tips[tips.findIndex(tip => tip.type === sugarType)].advices.reduce((a,b) => a + `<li class="list-group-item">${b}</li>`, '') +
             `</ol>`+
